@@ -1,0 +1,16 @@
+#!/bin/bash
+
+icon_mute=''
+icon_full=''
+icon_rest=''
+volume=$(amixer sget Master | sed -n "0,/.*\[\([0-9]\+\)%\].*/s//\1/p")
+
+icon=$icon_rest
+
+if [ $volume -eq 0 ]; then
+	icon=$icon_mute
+elif [ $volume -gt 75 ]; then
+	icon=$icon_full
+fi
+
+printf "%s %3s%%%%" "$icon" "$volume"

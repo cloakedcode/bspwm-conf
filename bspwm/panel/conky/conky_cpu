@@ -1,0 +1,37 @@
+out_to_x yes
+out_to_console no
+background yes
+
+own_window yes
+own_window_class conky_cpu
+own_window_type panel
+own_window_argb_visual yes
+own_window_argb_value 240
+double_buffer yes
+
+minimum_size 200 120
+alignment top_right
+gap_x 165
+gap_y 17
+
+own_window_colour 4e4e4e
+default_color bcbcbc
+
+use_xft yes
+xftfont Tewi:size=7
+draw_shades no
+
+update_interval 5
+
+TEXT
+${if_match ${cpu cpu0} > 75}${color d75f5f}${endif}${cpubar cpu0}${color}
+${if_match ${cpu cpu1} > 75}${color d75f5f}${endif}${cpubar cpu1}${color}
+${if_match ${cpu cpu2} > 75}${color d75f5f}${endif}${cpubar cpu2}${color}
+${if_match ${cpu cpu3} > 75}${color d75f5f}${endif}${cpubar cpu3}${color}
+${if_match ${cpu cpu4} > 75}${color d75f5f}${endif}${cpubar cpu4}${color}
+
+${alignc}1m: ${loadavg 1} 5m: ${loadavg 2} 15m: ${loadavg 3}
+${stippled_hr}
+${top name 1}${alignr}${top cpu 1}
+${top name 2}${alignr}${top cpu 2}
+${top name 3}${alignr}${top cpu 3}

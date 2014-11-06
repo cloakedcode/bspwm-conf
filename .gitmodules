@@ -1,0 +1,3 @@
+[submodule "bspwm/wp"]
+	path = bspwm/wp
+	url = https://github.com/everett1992/wp.git

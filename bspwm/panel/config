@@ -1,0 +1,46 @@
+#!/bin/sh
+
+# Fonts defined in xfontsel (xft not yet supported)
+FONT1="-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+FONT2="-lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1"
+
+source $HOME/.colors
+
+COLOR_BACKGROUND=`echo $COLOR0 | sed s/#/#FF/`
+COLOR_FOREGROUND=`echo $COLOR15 | sed s/#/#FF/`
+COLOR_ICON=`echo $COLOR5 | sed s/#/#FF/`
+COLOR_ACTIVE=$COLOR_ICON
+COLOR_OCCUPIED=`echo $COLOR3 | sed s/#/#FF/`
+COLOR_URGENT=`echo $COLOR14 | sed s/#/#FF/`
+
+#COLOR_BACKGROUND="#FF1f1f1f"
+#COLOR_FOREGROUND="#FFc0b18b"
+#COLOR_ICON="#FF775759"
+#COLOR_ACTIVE="#FFaf865a"
+#COLOR_OCCUPIED="#FF4A3637"
+#COLOR_URGENT="#FFd17b49"
+
+# Height of underlines / overlines
+LINEHEIGHT="3"
+
+# Panel geometry
+PANEL_HEIGHT=12
+PANEL_WIDTH=$(xrandr  | grep \* | cut -d x -f1)
+PANEL_GEOMETRY="${PANEL_WIDTH}x${PANEL_HEIGHT}+0+0"
+
+# Notification geometry
+NOTIFY_HEIGHT=$PANEL_HEIGHT
+NOTIFY_WIDTH=135
+NOTIFY_GEOMETRY="${NOTIFY_WIDTH}x${NOTIFY_HEIGHT}+0+0"
+
+# Duration of notifications
+DURATION=2
+
+# Monitor to display panel on
+MONITOR="$(bspc query -M | tail -n1)"
+
+# Volume change clip
+CLIP="/usr/local/share/sounds/freedesktop/stereo/audio-volume-change.oga"
+# Length of volume bar
+BAR_LENGTH=20
+BAR_CHAR='='

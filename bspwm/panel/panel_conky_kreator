@@ -1,0 +1,22 @@
+background yes
+out_to_console yes
+out_to_x no
+update_interval 3
+
+template0 ~/.config/bspwm/panel/scripts/toggle_conky \1
+
+TEXT
+S%{F\#FF4E4E4E}⮂%{F-}%{B\#FF4E4E4E} \
+%{A:${template0 net}:} ${addr enp0s25}%{A}  \
+%{A:${template0 disk}:} / ${fs_used_perc /}%% \
+/home ${fs_used_perc /home}%% \
+/scratch ${fs_used_perc /scratch}%%%{A}  \
+%{A:${template0 mem}:} ${memperc}%%%{A}  \
+${if_match ${cpu cpu0} > 75}\
+%{F\#FFD75F5F}${endif}\
+%{A:${template0 cpu}:} ${cpu cpu0}%%%{A}%{F-}  \
+${if_match ${hwmon 0 temp 1} > 59}\
+%{F\#FFD75F5F}${endif}\
+%{A:${template0 temp}:} ${hwmon 0 temp 1}°%{A}%{F-}  \
+%{A:${template0 mpd}:}${exec scripts/panel_volume}%{A}  \
+%{F\#FFFF87AFAF}⮂%{F\#FF000000}%{B\#FFFF87AFAF} %{A:${template0 cal}:} ${time %a %d.%m.%Y. %H:%M}%{A}%{B-}

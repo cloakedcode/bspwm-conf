@@ -1,0 +1,35 @@
+out_to_x yes
+out_to_console no
+background yes
+
+own_window yes
+own_window_class conky_mem
+own_window_type panel
+own_window_argb_visual yes
+own_window_argb_value 240
+double_buffer yes
+
+minimum_size 200 100
+alignment top_right
+gap_x 215
+gap_y 17
+
+own_window_colour 4e4e4e
+default_color bcbcbc
+
+use_xft yes
+xftfont Tewi:size=7
+draw_shades no
+
+update_interval 5
+
+TEXT
+${membar}
+
+${alignc}Buffers: ${buffers}
+${alignc}Cache: ${cached}
+${alignc}Free: ${memfree}
+${stippled_hr}
+${top_mem name 1}${alignr}${top_mem mem_res 1}
+${top_mem name 2}${alignr}${top_mem mem_res 2}
+${top_mem name 3}${alignr}${top_mem mem_res 3}

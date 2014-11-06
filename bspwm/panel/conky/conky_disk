@@ -1,0 +1,50 @@
+out_to_x yes
+out_to_console no
+background yes
+
+own_window yes
+own_window_class conky_disk
+own_window_type panel
+own_window_argb_visual yes
+own_window_argb_value 240
+double_buffer yes
+
+minimum_size 200 150
+alignment top_right
+gap_x 335
+gap_y 17
+
+own_window_colour 4e4e4e
+default_color bcbcbc
+
+use_xft yes
+xftfont Tewi:size=7
+draw_shades no
+
+update_interval 5
+
+TEXT
+${alignc}OCZ Vector 150
+${diskiograph_write /dev/sda 15}
+${alignc}▲ Write: ${diskio_write /dev/sda}
+${diskiograph_read /dev/sda 15}
+${alignc}▼ Read: ${diskio_read /dev/sda}
+
+/:     ${fs_bar /}
+/home: ${fs_bar /home/jura}
+
+Wear:  ${execibar 86400 sudo smartctl --attributes /dev/sda | grep Wearout|awk '{print $NF}'}
+${alignc}Elevator: ${ioscheduler sda}
+${alignc}SMART status: ${execi 86400 sudo smartctl -H /dev/sda | grep result | awk '{print $NF}'}
+${stippled_hr}
+${alignc}SAMSUNG SpinPoint P80 SD
+${diskiograph_write /dev/sdb 15}
+${alignc}▲ Write: ${diskio_write /dev/sdb}
+${diskiograph_read /dev/sdb 15}
+${alignc}▼ Read: ${diskio_read /dev/sdb}
+
+/scratch: ${fs_bar /scratch/out}
+
+${alignc}Elevator: ${ioscheduler sdb}
+${alignc}SMART status: ${execi 86400 sudo smartctl -H /dev/sdb | grep result | awk '{print $NF}'}
+

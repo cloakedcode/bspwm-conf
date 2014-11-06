@@ -1,0 +1,14 @@
+#!/bin/sh
+
+pkill -x dmenu
+xdotool search --class conky windowunmap %@
+dmenu_run -l 20 \
+	-w 200 \
+	-y 0 \
+	-x 60\
+	-fn -lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1 \
+	-nb '#4e4e4e' \
+	-nf '#bcbcbc' \
+	-sf '#000000' \
+	-sb '#87afaf' \
+	-o 0.98 2>/dev/null

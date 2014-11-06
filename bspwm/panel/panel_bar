@@ -1,0 +1,69 @@
+#! /bin/sh
+
+source ./config
+
+CBR='%{B-}'
+CB1="%{B$COLOR_BACKGROUND}"
+CB2=$CB1
+CFR='%{F-}'
+CF1="%{F$COLOR_FOREGROUND}"
+CF2=$CF1
+CF3=$CF1
+CF4=$CF1
+LA='%{l}'
+RA='%{r}'
+AC='%{A:'
+AB=':}'
+AE='%{A}'
+#logo="${CB1}${CF1}${AC}~/.config/bspwm/panel/scripts/spawn_dmenu${AB} $(hostname) ${CB2}${CF2}⮀${CFR}${AE}"
+while read -r line ; do
+	case $line in
+	S*)
+		sys_infos="${RA}${line#?}"
+	;;
+	T*)
+		title="${CFR} ${line#?} "
+	;;
+	W*)
+		wm_infos="${CB2}"
+		IFS=':'
+		set -- ${line#?}
+		while [ $# -gt 0 ] ; do
+			item=$1
+			name=${item#?}
+			case $item in
+			[OFU]*)
+				# active desktop
+				wm_infos="${wm_infos}${CF2}${AC}bspc desktop -f ${name}${AB} • ${AE}${CFR}"
+			;;
+			o*)
+				# inactive but occupied desktop
+				wm_infos="${wm_infos}${AC}bspc desktop -f ${name}${AB} • ${AE}"
+			;;
+			f*)
+				# inactive desktop
+				wm_infos="${wm_infos}${AC}bspc desktop -f ${name}${AB} ○ ${AE}"
+			;;
+			u*)
+				# urgent desktop
+				wm_infos="${wm_infos}${CF3}${AC}bspc desktop -f ${name}${AB} • ${AE}${CFR}"
+			;;
+			L*)
+				# layout
+				case $name in
+				t*)
+					layout=""
+				;;
+				m*)
+					layout=""
+				;;
+				esac
+				wm_infos="${wm_infos} ${AC}bspc desktop -l next${AB}${layout}${AE} ${CBR}${CF4}"
+			;;
+			esac
+			shift
+		done
+	;;
+	esac
+	printf "%s\n" "$wm_infos $sys_infos"
+done

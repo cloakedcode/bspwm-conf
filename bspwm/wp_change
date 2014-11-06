@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function shuffle {
+    echo $* | tr " " "\n" | shuf | tr -d " "
+}
+
+WP_DIR=$HOME/.config/bspwm/wp
+WP=$WP_DIR/wp
+
+OPTS=$(shuffle `$WP list`)
+
+$WP change ${OPTS[0]}
+$WP_DIR/misc/xfce4-term

@@ -1,0 +1,26 @@
+out_to_x yes
+out_to_console no
+background yes
+
+own_window yes
+own_window_class conky_cal
+own_window_type panel
+own_window_argb_visual yes
+own_window_argb_value 240
+double_buffer yes
+
+minimum_size 135 90
+alignment top_right
+gap_y 17
+
+own_window_colour 4e4e4e
+default_color 000000
+
+use_xft yes
+xftfont Tewi:size=7
+draw_shades no
+
+update_interval 5
+
+TEXT
+${execp cal -m --color=always | sed -e 's/\x1B\[7m/\$\{color 5f87af\}/' -e 's/\x1B\[27m/\$\{color 000000\}/' -e '/^\s*$/d' -e 's/\s*$//g' -e 's/^/\$\{goto 15\}/g'}

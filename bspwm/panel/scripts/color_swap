@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+function color_swap {
+    source $HOME/.config/bspwm/panel/config
+    COLORS=( COLOR_BACKGROUND COLOR_FOREGROUND COLOR_ICON COLOR_ACTIVE COLOR_OCCUPIED COLOR_URGENT )
+
+    F=$(realpath $1)
+    IZED="$F.color"
+    cp $F $IZED
+    for c in "${COLORS[@]}"; do
+        sed -i "s/$c/${!c}/g" "${IZED}"
+    done
+
+    echo $IZED
+}
+
+color_swap $*

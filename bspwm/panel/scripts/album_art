@@ -1,0 +1,5 @@
+#!/bin/sh
+
+dir=/home/jura/Music/$(mpc -f %file% | head -1 | cut -d / -f 1-2)
+hash=$(echo $dir | md5sum | awk '{print $1}')
+echo \${image ~/Music/.artcache/$hash.png -p 0,0 -s 100x100}
