@@ -10,4 +10,8 @@ WP=$WP_DIR/wp
 OPTS=$(shuffle `$WP list`)
 
 $WP change ${OPTS[0]}
-$WP_DIR/misc/xfce4-term
+
+XFCE_TERM=$(which xfce4-terminal)
+if [ $? -eq 0 ]; then
+    $WP_DIR/misc/xfce4-term
+fi

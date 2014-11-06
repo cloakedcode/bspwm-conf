@@ -5,5 +5,4 @@
 /usr/bin/xautolock -time 2 -locker slock -corners +000 -cornerdelay 3 &
 
 /usr/bin/redshift &
-/usr/bin/caffeine &
 /usr/bin/connmand &

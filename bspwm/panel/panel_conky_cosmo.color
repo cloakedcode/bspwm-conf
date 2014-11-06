@@ -7,9 +7,9 @@ template0 ~/.config/bspwm/panel/scripts/toggle_conky \1
 
 TEXT
 S \
-%{A:${template0 wireless}:}%{F\#FF0490a0}%{F-} ${wireless_essid wlp3s0} ${addr wlp3s0}%{A}  \
-%{A:${template0 wired}:}%{F\#FF0490a0} %{F-} ${addr enp0s25}%{A}  \
-%{A:${template0 disk}:}%{F\#FF0490a0} %{F-} / ${fs_used_perc /}%% \
-%{A:${template0 mem}:}%{F\#FF0490a0}%{F-} ${memperc}%%%{A}  \
-%{A:${template0 cpu}:}%{F\#FF0490a0}%{F-} ${cpu cpu0}%%%{A}  \
-%{A:${template0 cal}:}%{F\#FF0490a0}%{F-} ${time %a %d.%m.%Y. %H:%M}%{A}
+%{A:${template0 wireless}:}%{F\#FF89a0a0}%{F-} ${wireless_essid wlp3s0} ${addr wlp3s0}%{A}  \
+%{A:${template0 wired}:}%{F\#FF89a0a0} %{F-} ${addr enp0s25}%{A}  \
+%{A:${template0 disk}:}%{F\#FF89a0a0} %{F-} / ${fs_used_perc /}%% \
+%{A:${template0 mem}:}%{F\#FF89a0a0}%{F-} ${memperc}%%%{A}  \
+%{A:${template0 cpu}:}%{F\#FF89a0a0}%{F-} ${cpu cpu0}%%%{A}  \
+%{A:${template0 cal}:}%{F\#FF89a0a0}%{F-} ${time %a %d.%m.%Y. %H:%M}%{A}
