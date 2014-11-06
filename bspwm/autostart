@@ -6,3 +6,4 @@
 
 /usr/bin/redshift &
 /usr/bin/connmand &
+/usr/bin/unclutter -root -idle 3 &
